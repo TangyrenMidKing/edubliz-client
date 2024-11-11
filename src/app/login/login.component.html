@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <div class="logo">
+      <h1>Edu<span>Bliz</span></h1>
+    </div>
+
+    <div class="login-header">
+      <p>Enter your username to get started</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="startTraining()">
+      <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput 
+               formControlName="userName" 
+               required>
+        <mat-error *ngIf="userName?.errors?.['required']">
+          Username is required
+        </mat-error>
+        <mat-error *ngIf="userName?.errors?.['minlength']">
+          Username must be at least 2 characters
+        </mat-error>
+      </mat-form-field>
+
+      <button class="continue-button" 
+              type="submit" 
+              [disabled]="loginForm.invalid">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
