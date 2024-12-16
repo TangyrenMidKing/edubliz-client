@@ -1,6 +1,33 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mdc-button.mat-success,
+.mat-mdc-stroked-button.mat-success {
+  color: green;
+}
+.mat-mdc-unelevated-button.mat-success:hover,
+.mat-mdc-raised-button.mat-success:hover {
+  color: #f0fff3;
+  background-color: green;
+}
+
+.mat-mdc-unelevated-button:not(:disabled, :hover).mat-success,
+.mat-mdc-raised-button.mat-success,
+.mat-mdc-fab.mat-success,
+.mat-mdc-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: green;
+}
+.mat-mdc-icon-button.mat-success {
+  color: green;
+}

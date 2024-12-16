@@ -1,6 +1,7 @@
 // Main data interface
 export interface TrainingData {
   count: number;
+  iteration: number;
   chinese: CharacterItem[];
   spanish: CharacterItem[];
   chinese_voice: VoiceItem[];

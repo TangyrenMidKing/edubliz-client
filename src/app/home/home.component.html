@@ -1,0 +1,23 @@
+<div class="page-container">
+  <h1 class="welcome-title">Welcome, {{ userName }}</h1>
+  <br />
+
+  <div class="button-container">
+    <button
+      (click)="trainingChinese()"
+      mat-raised-button
+      color="primary"
+      class="card-button"
+    >
+      Training
+    </button>
+    <button
+      (click)="test()"
+      mat-raised-button
+      color="accent"
+      class="card-button"
+    >
+      Test
+    </button>
+  </div>
+</div>

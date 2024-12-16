@@ -1,74 +1,93 @@
+/* Add this to your training-chinese.component.css */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove default margin */
+  background-color: #f5f5f5; /* Optional: background color */
+}
+
 .quiz-container {
-  text-align: center;
-  padding: 2rem;
-}
-
-.page-title {
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.question-counter {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #17a2b8;
-  color: white;
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-}
-
-.greeting {
-  margin-bottom: 1.5rem;
-  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+  margin: 20px 10%; /* Add a 20px top margin and 10% margin on the sides */
 }
 
 .quiz-card {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 90%; /* Set width to 90% of the page */
+  padding: 30px; /* Increase padding for more space inside the card */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly larger shadow for depth */
+  background-color: white; /* Card background color */
 }
 
 .image-container {
-  margin-bottom: 1.5rem;
+  margin: 10px 0; /* Space around the image */
 }
 
 .quiz-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  width: 100%; /* Make the image responsive */
+  height: 100%; /* Maintain aspect ratio */
+  max-width: 800px;
+  max-height: 600px;
 }
 
 .answer-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: center; /* Center buttons */
+  flex-wrap: wrap; /* Allow wrapping if necessary */
   margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.option {
+  width: 25%;
+  height: 50px;
 }
 
 .answer-button {
-  min-width: 200px;
-  padding: 1rem;
-  margin: 0.5rem;
+  width: 90%;
+  height: 100%;
+  font-size: 30px; /* Increase font size for larger buttons */
 }
 
-.answer-button.selected {
-  background-color: #007bff;
-  color: white;
-}
-
-.feedback {
-  margin: 1rem 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.next-button {
+.next-button-container {
+  display: flex;
+  justify-content: center; /* Center the Next Question button */
   margin-top: 1rem;
 }
 
-@media (max-width: 768px) {
-  .answer-button {
-    min-width: 150px;
-  }
-} 
+.next-button {
+  width: 30%;
+  height: 50px;
+  font-size: 30px;
+}
+
+.page-title {
+  font-size: 50px;
+  font-family: "Arial", sans-serif;
+}
+
+.question-counter {
+  font-size: 20px; /* Increase font size */
+  color: #333; /* Darker text color for better contrast */
+  background-color: #e0f7fa; /* Light background color */
+  padding: 10px 20px; /* Padding for better spacing */
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 20px; /* Space below the counter */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.correct-answer {
+  background-color: #4caf50; /* Green background for the correct answer */
+  color: white; /* White text color */
+}
+
+.incorrect-answer {
+  background-color: #f44336; /* Red background for incorrect answers */
+  color: white; /* White text color */
+  opacity: 0.6; /* Make incorrect answers slightly transparent */
+}

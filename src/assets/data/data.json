@@ -1,5 +1,6 @@
 {
     "count": 6,
+    "iteration": 1,
     "chinese": [
       {
         "id": 0,
@@ -55,84 +56,84 @@
     "chinese_voice": [
       {
         "id": 0,
-        "audio_url": "path/to/voice/房子.mp3"
+        "audio_url": "/assets/voice-cn/scissor.mp3"
       },
       {
         "id": 1,
-        "audio_url": "path/to/voice/朋友.mp3"
+        "audio_url": "/assets/voice-cn/backpack.mp3"
       },
       {
         "id": 2,
-        "audio_url": "path/to/voice/吃.mp3"
+        "audio_url": "/assets/voice-cn/ring.mp3"
       },
       {
         "id": 3,
-        "audio_url": "path/to/voice/书.mp3"
+        "audio_url": "/assets/voice-cn/hanger.mp3"
       },
       {
         "id": 4,
-        "audio_url": "path/to/voice/水.mp3"
+        "audio_url": "/assets/voice-cn/finger.mp3"
       },
       {
         "id": 5,
-        "audio_url": "path/to/voice/谢谢.mp3"
+        "audio_url": "/assets/voice-cn/keyboard.mp3"
       }
     ],
     "spanish_voice": [
       {
         "id": 0,
-        "audio_url": "path/to/voice/casa.mp3"
+        "audio_url": "/assets/voice-sp/scissor.mp3"
       },
       {
         "id": 1,
-        "audio_url": "path/to/voice/amigo_amiga.mp3"
+        "audio_url": "/assets/voice-sp/backpack.mp3"
       },
       {
         "id": 2,
-        "audio_url": "path/to/voice/comer.mp3"
+        "audio_url": "/assets/voice-sp/ring.mp3"
       },
       {
         "id": 3,
-        "audio_url": "path/to/voice/libro.mp3"
+        "audio_url": "/assets/voice-sp/hanger.mp3"
       },
       {
         "id": 4,
-        "audio_url": "path/to/voice/agua.mp3"
+        "audio_url": "/assets/voice-sp/finger.mp3"
       },
       {
         "id": 5,
-        "audio_url": "path/to/voice/gracias.mp3"
+        "audio_url": "/assets/voice-sp/keyboard.mp3"
       }
     ],
     "image": [
       {
         "id": 0,
-        "image_url": "../img/scissors.jpg",
-        "description": "An image of a scissors"
+        "image_url": "/assets/img/scissor.jpg",
+        "description": "An image of a scissor"
       },
       {
         "id": 1,
-        "image_url": "../img/backpack.jpg",
+        "image_url": "/assets/img/backpack.jpg",
         "description": "An image representing backpack"
       },
       {
         "id": 2,
-        "image_url": "../img/ring.jpg",
+        "image_url": "/assets/img/ring.jpg",
         "description": "An image showing ring"
       },
       {
         "id": 3,
-        "image_url": "../img/hanger.jpg",
+        "image_url": "/assets/img/hanger.jpg",
         "description": "An image of a coat hanger"
       },
       {
         "id": 4,
-        "image_url": "../img/finger.jpg",
+        "image_url": "/assets/img/finger.jpg",
         "description": "An image of finger"
       },
       {
         "id": 5,
-        "image_url": "../img/keyboard.jpg",
+        "image_url": "/assets/img/keyboard.jpg",
         "description": "An image showing keyboard"
       }
     ]

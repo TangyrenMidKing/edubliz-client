@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         try {
           localStorage.setItem('username', trimmedUsername);
           
-          this.router.navigate(['/training-chinese'])
+          this.router.navigate(['/home'])
             .catch(error => {
               console.error('Navigation error:', error);
               this.showError('Navigation failed. Please try again.');

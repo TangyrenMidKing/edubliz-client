@@ -1,0 +1,29 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text */
+}
+.welcome-title {
+    font-size: 2.5em;
+    color: #3f51b5; /* Primary color */
+    margin-bottom: 20px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+.card-button {
+    width: 200px; /* Set a fixed width for buttons */
+    height: 60px; /* Set a fixed height for buttons */
+    font-size: 1.2em; /* Increase font size */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Card-like shadow */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+.card-button:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
