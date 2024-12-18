@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ImageItem, TrainingData } from '../_models/training_data';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Question, Option } from '../_models/question';
 import { EmailUtil } from '../_services/email_util';
 
@@ -47,8 +46,6 @@ export class TrainingChineseComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder,
     private http: HttpClient,
     private emailUtil: EmailUtil
   ) {}

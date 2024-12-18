@@ -1,0 +1,32 @@
+/* Option container styling */
+.question-option {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between options */
+    margin: 20px 0; /* Space above and below the options */
+    text-align: center; /* Center text in each option */
+}
+
+/* Question container styling */
+.container {
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside the card */
+    margin: 40px auto; /* Space above (40px) and below (auto for centering) */
+    width: 80%; /* width */
+    height: 80%; /* height */
+    overflow: auto; /* Add scrollbars if content exceeds max height */
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+/* Additional styles for the title and question text */
+.title-text {
+    margin-bottom: 15px; /* Space below the title */
+}
+
+.question-text {
+    margin-bottom: 15px; /* Space below the question text */
+}

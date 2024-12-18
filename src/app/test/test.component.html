@@ -1,1 +1,116 @@
-<p>test works!</p>
+<div class="container">
+  <h1 class="title-text">Test</h1>
+  <div class="question-container" *ngIf="currentQuestion">
+    <div class="question-text">
+      <div class="question-text-container">
+        <p
+          *ngIf="
+            currentQuestion.question_type === 'ChineseCharacter' ||
+            currentQuestion.question_type === 'SpanishCharacter'
+          "
+        >
+          {{ getCharacter(currentQuestion.question) }}
+        </p>
+      </div>
+
+      <div
+        class="volume-icon-container"
+        *ngIf="
+          currentQuestion.question_type === 'ChineseVoice' ||
+          currentQuestion.question_type === 'SpanishVoice'
+        "
+      >
+        <img
+          src="/assets/img/volume-icon.svg"
+          alt="Volume Up"
+          class="volume-icon"
+          (mouseenter)="playAudio('audio-' + currentQuestion.question.id)"
+          (mouseleave)="pauseAudio('audio-' + currentQuestion.question.id)"
+        />
+        <audio
+          [src]="getQuestionUrl(currentQuestion.question)"
+          id="audio-{{ currentQuestion.question.id }}"
+        ></audio>
+      </div>
+
+      <div
+        class="image-container"
+        *ngIf="currentQuestion.question_type === 'Img'"
+      >
+        <img [src]="getQuestionUrl(currentQuestion.question)" alt="Image" />
+      </div>
+    </div>
+
+    <div class="question-options">
+      <div class="question-option" *ngIf="currentQuestion.answer_type === 'ChineseCharacter'">
+        <div
+          class="option-container"
+          *ngFor="let option of getChineseOptions()"
+        >
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="selectOption(option)"
+          >
+            {{ option.character }}
+          </button>
+        </div>
+      </div>
+
+      <div class="question-option" *ngIf="currentQuestion.answer_type === 'SpanishCharacter'">
+        <div *ngFor="let option of getSpanishOptions()">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="selectOption(option)"
+          >
+            {{ option.character }}
+          </button>
+        </div>
+      </div>
+
+      <div class="question-option" *ngIf="currentQuestion.answer_type === 'ChineseVoice'">
+        <div *ngFor="let option of getChineseVoiceOptions()">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="selectOption(option)"
+            (mouseenter)="playAudio('audio-chinese-' + option.id)"
+            (mouseleave)="pauseAudio('audio-chinese-' + option.id)"
+          >
+            Hover
+          </button>
+          <audio
+            [src]="getOptionUrl(option)"
+            id="audio-chinese-{{ option.id }}"
+          ></audio>
+        </div>
+      </div>
+
+      <div class="question-option" *ngIf="currentQuestion.answer_type === 'SpanishVoice'">
+        <div *ngFor="let option of getSpanishVoiceOptions()">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="selectOption(option)"
+            (mouseenter)="playAudio('audio-spanish-' + option.id)"
+            (mouseleave)="pauseAudio('audio-spanish-' + option.id)"
+          >
+            Hover
+          </button>
+          <audio
+            [src]="getOptionUrl(option)"
+            id="audio-spanish-{{ option.id }}"
+          ></audio>
+        </div>
+      </div>
+
+      <div class="question-option" *ngIf="currentQuestion.answer_type === 'Img'">
+        <div *ngFor="let option of getImgOptions()">
+          <img [src]="getOptionUrl(option)" alt="Image" />
+        </div>
+      </div>
+    </div>
+    <p *ngIf="!currentQuestion">No more questions!</p>
+  </div>
+</div>

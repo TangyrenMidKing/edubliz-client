@@ -1,4 +1,6 @@
 export interface Test {
+  question_type: string;
+  answer_type: string;
   question:
     | ChineseCharacter
     | SpanishCharacter
@@ -17,7 +19,7 @@ export interface Test {
     | ChineseVoice
     | SpanishVoice
     | Img;
-  selected:
+  selected?:
     | ChineseCharacter
     | SpanishCharacter
     | ChineseVoice
@@ -50,12 +52,4 @@ export interface Img {
   id: number;
   image_url: string;
   description: string;
-}
-
-export enum Medias {
-  chineseCharacter = 'ChineseCharacter',
-  spanishCharacter = '  SpanishCharacter',
-  chineseVoice = 'ChineseVoice',
-  spanishVoice = 'SpanishVoice',
-  image = 'Img',
 }

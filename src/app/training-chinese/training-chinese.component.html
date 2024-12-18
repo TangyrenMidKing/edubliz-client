@@ -1,10 +1,11 @@
 <!-- Add this to your training-chinese.component.html -->
 <div class="quiz-container" *ngIf="question !== undefined">
+  <br/>
   <h1 class="page-title">Chinese Training</h1>
-  <div class="question-counter">
+  <!-- <div class="question-counter">
     Total Questions: {{ totalQuestions - queue.length }} of {{ totalQuestions }}
-  </div>
-  
+  </div> -->
+  <br/>
   <div class="quiz-card">
     <div class="image-container">
       <img [src]="question.image.image_url" alt="Question Image" class="quiz-image" />

@@ -1,45 +1,59 @@
 <!-- Add this to your training-chinese.component.html -->
 <div class="quiz-container" *ngIf="question !== undefined">
-    <h1 class="page-title">Spanish Training</h1>
-    <div class="question-counter">
+  <br />
+  <h1 class="page-title">Spanish Training</h1>
+  <!-- <div class="question-counter">
       Total Questions: {{ totalQuestions - queue.length }} of {{ totalQuestions }}
     </div>
-    
-    <div class="quiz-card">
-      <div class="image-container">
-        <img [src]="question.image.image_url" alt="Question Image" class="quiz-image" />
-      </div>
-      
-      <div class="answer-container">
-        <div *ngFor="let option of question.Options" class="option">
-          <button 
-            mat-flat-button 
-            color="primary"
-            class="answer-button" 
-            [ngClass]="{'correct-answer': option.isCorrect && correctAnswerSelected, 'incorrect-answer': !option.isCorrect && option.isSelected}" 
-            [disabled]="option.isDisabled" 
-            (mouseenter)="playAudio('audio-' + option.id)" 
-            (mouseleave)="pauseAudio('audio-' + option.id)" 
-            (click)="selectAnswer(option)">
-            {{ option.spanish.character }}
-          </button>
-          <audio [src]="option.spanish_voice.audio_url" id="audio-{{ option.id }}"></audio>
-        </div>
-      </div>
-      
-      <div class="feedback" *ngIf="feedback">
-        {{ feedback }}
-      </div>
-      
-      <div class="next-button-container" *ngIf="correctAnswerSelected">
-        <button 
-          mat-flat-button 
-          color="success"
-          class="next-button" 
-          (click)="nextQuestion()">
-          Next Question
+     -->
+  <br />
+
+  <div class="quiz-card">
+    <div class="image-container">
+      <img
+        [src]="question.image.image_url"
+        alt="Question Image"
+        class="quiz-image"
+      />
+    </div>
+
+    <div class="answer-container">
+      <div *ngFor="let option of question.Options" class="option">
+        <button
+          mat-flat-button
+          color="primary"
+          class="answer-button"
+          [ngClass]="{
+            'correct-answer': option.isCorrect && correctAnswerSelected,
+            'incorrect-answer': !option.isCorrect && option.isSelected
+          }"
+          [disabled]="option.isDisabled"
+          (mouseenter)="playAudio('audio-' + option.id)"
+          (mouseleave)="pauseAudio('audio-' + option.id)"
+          (click)="selectAnswer(option)"
+        >
+          {{ option.spanish.character }}
         </button>
+        <audio
+          [src]="option.spanish_voice.audio_url"
+          id="audio-{{ option.id }}"
+        ></audio>
       </div>
     </div>
+
+    <div class="feedback" *ngIf="feedback">
+      {{ feedback }}
+    </div>
+
+    <div class="next-button-container" *ngIf="correctAnswerSelected">
+      <button
+        mat-flat-button
+        color="success"
+        class="next-button"
+        (click)="nextQuestion()"
+      >
+        Next Question
+      </button>
+    </div>
   </div>
-  
+</div>
