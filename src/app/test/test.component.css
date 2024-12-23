@@ -1,32 +1,162 @@
-/* Option container styling */
-.question-option {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between options */
-    margin: 20px 0; /* Space above and below the options */
-    text-align: center; /* Center text in each option */
-}
-
 /* Question container styling */
 .container {
-    background-color: #ffffff; /* White background for the card */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 20px; /* Padding inside the card */
-    margin: 40px auto; /* Space above (40px) and below (auto for centering) */
-    width: 80%; /* width */
-    height: 80%; /* height */
-    overflow: auto; /* Add scrollbars if content exceeds max height */
-    display: flex; /* Use flexbox for centering content */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+  background-color: #ffffff; /* White background for the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Padding inside the card */
+  margin: 20px auto; /* Space above (40px) and below (auto for centering) */
+  width: 80%; /* width */
+  height: 80%; /* height */
+  overflow: auto; /* Add scrollbars if content exceeds max height */
+  display: flex; /* Use flexbox for centering content */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
-/* Additional styles for the title and question text */
-.title-text {
-    margin-bottom: 15px; /* Space below the title */
-}
-
+/* Additional styles for the question text */
 .question-text {
-    margin-bottom: 15px; /* Space below the question text */
+  width: 90%; /* Set width to 90% of the parent container */
+  height: 60%; /* Set height to 60% of the parent container */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 }
+
+/* New styles for question container */
+.question-container {
+  width: 80%; /* Set width to 80% of the parent */
+  height: 80%; /* Set height to 80% of the parent */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+/* New styles for question text and options */
+.question-option-container {
+  height: 40%; /* Set height to 40% of the parent container */
+  width: 90%;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack options vertically */
+  justify-content: space-between; /* Space between options */
+}
+
+/* Option container styling */
+.question-options {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between options */
+  margin: 20px 0; /* Space above and below the options */
+  text-align: center; /* Center text in each option */
+  height: 100%; /* Ensure image takes full height of the card */
+}
+
+/* New styles for image cards */
+.question-option {
+  width: 200px; /* Set a larger fixed width for the card */
+  height: 200px; /* Set a larger fixed height for the card */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin: 10px; /* Space between cards */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 8px; /* Optional: rounded corners */
+  overflow: hidden; /* Hide overflow */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+  border: 3px solid #3f51b5;
+}
+
+.question-option:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.question-option img,
+button {
+  width: 100%; /* Ensure image takes full width of the card */
+  height: 100%; /* Ensure image takes full height of the card */
+  object-fit: contain; /* Maintain aspect ratio without cutting off the image */
+  background-color: #ffffff;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .question-options {
+    display: flex; /* Ensure flex display is set */
+    flex-direction: column; /* Stack options vertically */
+    align-items: center; /* Center options horizontally */
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  .image-card {
+    width: 100%; /* Set width to 100% of the parent */
+    height: auto; /* Allow height to adjust based on content */
+    max-width: 150px; /* Optional: limit max width */
+    margin: 5px 0; /* Adjust margin for vertical spacing */
+  }
+}
+
+/* Styles for the question text container */
+.question-container-text {
+  font-size: 5rem; /* Set a base font size */
+  line-height: 1.5; /* Adjust line height for better readability */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
+  overflow-wrap: break-word; /* Allow long words to break and fit */
+  text-align: center; /* Center text if needed */
+}
+
+/* Styles for the image container */
+.image-container,
+.volume-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Ensure it takes full width of the parent */
+  height: 100%; /* Allow height to adjust based on content */
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure image fits within the container */
+  height: 100%; /* Maintain aspect ratio */
+}
+
+.volume-container audio {
+  width: 70%;
+}
+
+/* Styles for the progress bar container */
+.progress-bar-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%; /* Full width of the parent */
+  margin: 20px 0; /* Space above and below the progress bar */
+  border-radius: 10px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensure the fill doesn't overflow */
+  
+}
+
+.progress-bar {
+  width: 70%;
+  background-color: #e0e0e0; /* Light gray background for the track */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Styles for the progress bar text */
+.progress-bar-text {
+    font-size: 1.2rem; /* Increase font size for better visibility */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center the text */
+    position: relative; /* Position relative for z-index to work */
+}
+
+/* Styles for the page title */
+.page-title {
+    text-align: center; /* Center the title text */
+    font-size: 5rem; /* Increase font size for prominence */
+    font-weight: bold; /* Make the title bold */
+    color: #3f51b5; /* Set a primary color for the title */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+}
+

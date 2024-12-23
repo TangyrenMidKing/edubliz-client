@@ -56,6 +56,7 @@ export class EmailUtil {
             <p>Best regards, <br>
             Your Training Team</p>`;
   }
+
   wrongQuestionsStringify(q: Question, language: string) {
     return `<p>Question: ${q.image.description}, Options: ${q.Options.map(
       (o: Option) =>

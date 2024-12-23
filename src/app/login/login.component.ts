@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   initializeLoginForm(): void {
+    localStorage.clear();
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(2)]]
     });

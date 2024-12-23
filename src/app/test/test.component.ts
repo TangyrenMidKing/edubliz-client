@@ -14,11 +14,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { EmailUtil } from '../_services/email_util';
 
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, CommonModule, FontAwesomeModule],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    CommonModule,
+    FontAwesomeModule,
+    MatProgressBarModule,
+  ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.css',
 })
@@ -26,6 +34,10 @@ export class TestComponent implements OnInit {
   data!: TrainingData;
   queue: Test[] = [];
   currentQuestion: Test | undefined;
+  totalQuestions: number = 0;
+  correctQuestions: number = 0;
+  answeredQuestions: number = 0;
+  statics: any = { total: {}, correct: {} };
   media = [
     'ChineseCharacter',
     'SpanishCharacter',
@@ -34,7 +46,11 @@ export class TestComponent implements OnInit {
     'Img',
   ];
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private emailUtil: EmailUtil
+  ) {}
 
   ngOnInit(): void {
     this.http
@@ -46,7 +62,7 @@ export class TestComponent implements OnInit {
       });
   }
 
-  fillQueue() {
+  private fillQueue() {
     for (let i = 0; i < this.media.length; i++) {
       for (let j = 0; j < this.media.length; j++) {
         if (i !== j) {
@@ -79,9 +95,10 @@ export class TestComponent implements OnInit {
       }
     }
     this.queue = this.shuffleArray(this.queue);
+    this.totalQuestions = this.queue.length;
   }
 
-  getQuestionAnswer(
+  private getQuestionAnswer(
     question_type: string,
     id: number
   ):
@@ -109,7 +126,7 @@ export class TestComponent implements OnInit {
     return undefined;
   }
 
-  getOptions(
+  private getOptions(
     answer_type: string,
     id: number
   ):
@@ -163,7 +180,7 @@ export class TestComponent implements OnInit {
     return undefined;
   }
 
-  shuffleArray(array: any[]): any[] {
+  private shuffleArray(array: any[]): any[] {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -174,17 +191,83 @@ export class TestComponent implements OnInit {
   nextQuestion() {
     if (this.queue.length > 0) {
       this.currentQuestion = this.queue.shift();
-      console.log(this.currentQuestion);
+      // console.log(this.currentQuestion);
     } else {
       this.currentQuestion = undefined;
+      this.emailUtil.sendEmail(
+        'chenzhesun@gmail.com',
+        'Test Results',
+        this.getStatics()
+      );
+      this.router.navigate(['/test-result']);
     }
+  }
+
+  private getStatics(): string {
+    let body: string = '';
+
+    body += '<h2>Statics for ' + localStorage.getItem('username') + '</h2>';
+    body += '<h3>Total: ' + this.totalQuestions + '</h3>';
+    body += '<h3>Total Correct: ' + this.correctQuestions + '</h3>';
+    body +=
+      '<h3>Total Incorrect: ' +
+      (this.answeredQuestions - this.correctQuestions) +
+      '</h3>';
+    body +=
+      '<h3>Accuracy: ' +
+      (this.answeredQuestions > 0
+        ? ((this.correctQuestions / this.answeredQuestions) * 100).toFixed(2)
+        : 0) +
+      '%</h3><br/>';
+
+    for (const [testtype, count] of Object.entries(this.statics.total)) {
+      body +=
+        '<p>' +
+        testtype +
+        ' accuracy: ' +
+        (count
+          ? (((this.statics.correct[testtype] || 0) / +count) * 100).toFixed(2)
+          : 0) +
+        '%</p><br/>';
+    }
+
+    return body;
   }
 
   selectOption(option: any) {
     if (this.currentQuestion) {
       this.currentQuestion.selected = option;
-      console.log('Selected option:', option);
+      // Check if the selected option is correct
+      if (this.currentQuestion.answer === option) {
+        this.statics.correct[
+          this.currentQuestion.question_type +
+            ' - ' +
+            this.currentQuestion.answer_type
+        ] =
+          (this.statics.correct[
+            this.currentQuestion.question_type +
+              ' - ' +
+              this.currentQuestion.answer_type
+          ] || 0) + 1;
+        this.correctQuestions++;
+      }
+
+      // Update total count
+      this.statics.total[
+        this.currentQuestion.question_type +
+          ' - ' +
+          this.currentQuestion.answer_type
+      ] =
+        (this.statics.total[
+          this.currentQuestion.question_type +
+            ' - ' +
+            this.currentQuestion.answer_type
+        ] || 0) + 1;
+
+      // Go to the next question
+      this.nextQuestion();
     }
+    this.answeredQuestions++;
   }
 
   getCharacter(question: any): string {
@@ -259,12 +342,15 @@ export class TestComponent implements OnInit {
     }
   }
 
-  // New method to pause audio
   pauseAudio(audioId: string): void {
     const audioElement = document.getElementById(audioId) as HTMLAudioElement;
     if (audioElement) {
       audioElement.pause();
       audioElement.currentTime = 0; // Reset audio to the beginning
     }
+  }
+
+  getProgress(): string {
+    return ((this.answeredQuestions / this.totalQuestions) * 100).toFixed(0);
   }
 }

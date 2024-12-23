@@ -1,0 +1,141 @@
+{
+    "count": 6,
+    "iteration": 3,
+    "chinese": [
+      {
+        "id": 0,
+        "character": "剪刀"
+      },
+      {
+        "id": 1,
+        "character": "背包"
+      },
+      {
+        "id": 2,
+        "character": "戒指"
+      },
+      {
+        "id": 3,
+        "character": "衣架"
+      },
+      {
+        "id": 4,
+        "character": "手指"
+      },
+      {
+        "id": 5,
+        "character": "键盘"
+      }
+    ],
+    "spanish": [
+      {
+        "id": 0,
+        "character": "Tijeras"
+      },
+      {
+        "id": 1,
+        "character": "Mochila"
+      },
+      {
+        "id": 2,
+        "character": "Anillo"
+      },
+      {
+        "id": 3,
+        "character": "Percha"
+      },
+      {
+        "id": 4,
+        "character": "Dedo"
+      },
+      {
+        "id": 5,
+        "character": "Teclado"
+      }
+    ],
+    "chinese_voice": [
+      {
+        "id": 0,
+        "audio_url": "/assets/voice-cn/scissor.mp3"
+      },
+      {
+        "id": 1,
+        "audio_url": "/assets/voice-cn/backpack.mp3"
+      },
+      {
+        "id": 2,
+        "audio_url": "/assets/voice-cn/ring.mp3"
+      },
+      {
+        "id": 3,
+        "audio_url": "/assets/voice-cn/hanger.mp3"
+      },
+      {
+        "id": 4,
+        "audio_url": "/assets/voice-cn/finger.mp3"
+      },
+      {
+        "id": 5,
+        "audio_url": "/assets/voice-cn/keyboard.mp3"
+      }
+    ],
+    "spanish_voice": [
+      {
+        "id": 0,
+        "audio_url": "/assets/voice-sp/scissor.mp3"
+      },
+      {
+        "id": 1,
+        "audio_url": "/assets/voice-sp/backpack.mp3"
+      },
+      {
+        "id": 2,
+        "audio_url": "/assets/voice-sp/ring.mp3"
+      },
+      {
+        "id": 3,
+        "audio_url": "/assets/voice-sp/hanger.mp3"
+      },
+      {
+        "id": 4,
+        "audio_url": "/assets/voice-sp/finger.mp3"
+      },
+      {
+        "id": 5,
+        "audio_url": "/assets/voice-sp/keyboard.mp3"
+      }
+    ],
+    "image": [
+      {
+        "id": 0,
+        "image_url": "/assets/img/scissor.jpg",
+        "description": "An image of a scissor"
+      },
+      {
+        "id": 1,
+        "image_url": "/assets/img/backpack.jpg",
+        "description": "An image representing backpack"
+      },
+      {
+        "id": 2,
+        "image_url": "/assets/img/ring.jpg",
+        "description": "An image showing ring"
+      },
+      {
+        "id": 3,
+        "image_url": "/assets/img/hanger.jpg",
+        "description": "An image of a coat hanger"
+      },
+      {
+        "id": 4,
+        "image_url": "/assets/img/finger.jpg",
+        "description": "An image of finger"
+      },
+      {
+        "id": 5,
+        "image_url": "/assets/img/keyboard.jpg",
+        "description": "An image showing keyboard"
+      }
+    ]
+  }
+  

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.userName = localStorage.getItem('userName') || '';
+    this.userName = localStorage.getItem('username') || '';
   }
 
   trainingChinese() {
