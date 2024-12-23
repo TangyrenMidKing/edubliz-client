@@ -90,7 +90,7 @@ export class TrainingSpanishComponent implements OnInit {
       );
       this.emailUtil.sendEmail(
         'chenzhesun@gmail.com',
-        'Training Results - ' + localStorage.getItem('userName'),
+        'Training Results - ' + localStorage.getItem('username'),
         this.emailUtil.trainingTemplate()
       );
 
