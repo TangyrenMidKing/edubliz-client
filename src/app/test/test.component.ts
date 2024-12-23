@@ -290,6 +290,12 @@ export class TestComponent implements OnInit {
     if (question && this.currentQuestion?.question_type === 'Img') {
       return (question as Img).image_url;
     }
+
+    const audioElement = document.getElementById('audio-question') as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.load();
+    }
+
     if (question && this.currentQuestion?.question_type === 'ChineseVoice') {
       return (question as ChineseVoice).audio_url;
     }
@@ -338,6 +344,7 @@ export class TestComponent implements OnInit {
   playAudio(audioId: string): void {
     const audioElement = document.getElementById(audioId) as HTMLAudioElement;
     if (audioElement) {
+      audioElement.load();
       audioElement.play();
     }
   }

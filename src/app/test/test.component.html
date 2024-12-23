@@ -1,7 +1,7 @@
 <div class="page-title">
   <h1>Test</h1>
 </div>
-<div class="container"> 
+<div class="container">
   <div class="question-container" *ngIf="currentQuestion">
     <div class="question-text">
       <div
@@ -23,7 +23,7 @@
           currentQuestion.question_type === 'SpanishVoice'
         "
       >
-        <audio controls>
+        <audio controls id="audio-question">
           <source
             [src]="getQuestionUrl(currentQuestion.question)"
             type="audio/mpeg"
@@ -139,6 +139,10 @@
   </div>
 </div>
 <div class="progress-bar-container">
-  <mat-progress-bar class="progress-bar" mode="determinate" value="{{getProgress()}}"></mat-progress-bar>
-  <p class="progress-bar-text">&nbsp;&nbsp;{{getProgress()}}%</p>
+  <mat-progress-bar
+    class="progress-bar"
+    mode="determinate"
+    value="{{ getProgress() }}"
+  ></mat-progress-bar>
+  <p class="progress-bar-text">&nbsp;&nbsp;{{ getProgress() }}%</p>
 </div>
