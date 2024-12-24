@@ -50,6 +50,7 @@
       >
         <div class="question-option" *ngFor="let option of getChineseOptions()">
           <button
+            class="question-option-button"
             mat-flat-button
             color="primary"
             (click)="selectOption(option)"
@@ -65,6 +66,7 @@
       >
         <div class="question-option" *ngFor="let option of getSpanishOptions()">
           <button
+            class="question-option-button"
             mat-flat-button
             color="primary"
             (click)="selectOption(option)"
@@ -83,13 +85,14 @@
           *ngFor="let option of getChineseVoiceOptions()"
         >
           <button
+            class="question-option-button"
             mat-flat-button
             color="primary"
             (click)="selectOption(option)"
             (mouseenter)="playAudio('audio-chinese-' + option.id)"
             (mouseleave)="pauseAudio('audio-chinese-' + option.id)"
           >
-            Hover
+            🔊Hover
           </button>
           <audio
             [src]="getOptionUrl(option)"
@@ -107,13 +110,14 @@
           *ngFor="let option of getSpanishVoiceOptions()"
         >
           <button
+            class="question-option-button"
             mat-flat-button
             color="primary"
             (click)="selectOption(option)"
             (mouseenter)="playAudio('audio-spanish-' + option.id)"
             (mouseleave)="pauseAudio('audio-spanish-' + option.id)"
           >
-            Hover
+            🔊Hover
           </button>
           <audio
             [src]="getOptionUrl(option)"
