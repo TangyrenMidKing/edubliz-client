@@ -30,7 +30,7 @@ export class EmailUtil {
 
   trainingTemplate() {
     return `<p>${localStorage.getItem(
-      'userName'
+      'username'
     )} have completed a training session. Here are your results:</p>    
 
             <p>Chinese Training Accuracy: ${localStorage.getItem(
