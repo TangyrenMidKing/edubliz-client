@@ -36,6 +36,7 @@ export class TestComponent implements OnInit {
   currentQuestion: Test | undefined;
   totalQuestions: number = 0;
   correctQuestions: number = 0;
+  incorrectQuestions: number = 0;
   answeredQuestions: number = 0;
   statics: any = { total: {}, correct: {} };
   media = [
@@ -195,11 +196,10 @@ export class TestComponent implements OnInit {
     }
     return array;
   }
-
+  
   nextQuestion() {
     if (this.queue.length > 0) {
       this.currentQuestion = this.queue.shift();
-      // console.log(this.currentQuestion);
     } else {
       this.currentQuestion = undefined;
       this.emailUtil.sendEmail(
@@ -207,6 +207,7 @@ export class TestComponent implements OnInit {
         'Test Results',
         this.getStatics()
       );
+
       this.router.navigate(['/test-result']);
     }
   }
@@ -250,8 +251,7 @@ export class TestComponent implements OnInit {
       body += '<p>' + testtype + ' accuracy: ' + accuracy + '%</p><br/>';
     }
 
-    body +=
-      '<table style="width: 100%; border-collapse: collapse;"><tbody>';
+    body += '<table style="width: 100%; border-collapse: collapse;"><tbody>';
     for (let i = 0; i < accuracy_result.length; i++) {
       body +=
         '<tr><td style="border: 1px solid #ddd; padding: 8px;">' +
@@ -293,10 +293,13 @@ export class TestComponent implements OnInit {
             this.currentQuestion.answer_type
         ] || 0) + 1;
 
+      this.answeredQuestions++;
       // Go to the next question
       this.nextQuestion();
+    } else {
+      this.answeredQuestions++;
+      this.incorrectQuestions++;
     }
-    this.answeredQuestions++;
   }
 
   getCharacter(question: any): string {
