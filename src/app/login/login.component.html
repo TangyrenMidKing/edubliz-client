@@ -2,6 +2,7 @@
   <div class="login-card">
     <div class="logo">
       <h1>Edu<span>Bliz</span></h1>
+      v1.0.0
     </div>
 
     <div class="login-header">
@@ -11,9 +12,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="startTraining()">
       <mat-form-field class="form-field">
         <mat-label>Username</mat-label>
-        <input matInput 
-               formControlName="userName" 
-               required>
+        <input matInput formControlName="userName" required />
         <mat-error *ngIf="userName?.errors?.['required']">
           Username is required
         </mat-error>
@@ -22,9 +21,11 @@
         </mat-error>
       </mat-form-field>
 
-      <button class="continue-button" 
-              type="submit" 
-              [disabled]="loginForm.invalid">
+      <button
+        class="continue-button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
         Continue
       </button>
     </form>

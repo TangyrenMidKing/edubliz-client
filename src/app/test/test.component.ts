@@ -46,6 +46,14 @@ export class TestComponent implements OnInit {
     'Img',
   ];
 
+  media_class = {
+    A: 'Img',
+    B: 'ChineseCharacter',
+    C: 'ChineseVoice',
+    D: 'SpanishCharacter',
+    E: 'SpanishVoice',
+  };
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -220,16 +228,37 @@ export class TestComponent implements OnInit {
         : 0) +
       '%</h3><br/>';
 
-    for (const [testtype, count] of Object.entries(this.statics.total)) {
-      body +=
-        '<p>' +
-        testtype +
-        ' accuracy: ' +
-        (count
-          ? (((this.statics.correct[testtype] || 0) / +count) * 100).toFixed(2)
-          : 0) +
-        '%</p><br/>';
+    const values = Object.values(this.media_class);
+    const result: string[] = [];
+
+    for (let i = 0; i < values.length; i++) {
+      for (let j = 0; j < values.length; j++) {
+        if (i !== j) {
+          result.push(values[i] + ' - ' + values[j]);
+        }
+      }
     }
+
+    const accuracy_result: string[] = [];
+    for (const testtype of result) {
+      const count = this.statics.total[testtype] || 0;
+      const accuracy: string = count
+        ? (((this.statics.correct[testtype] || 0) / +count) * 100).toFixed(2)
+        : '0';
+      accuracy_result.push(accuracy);
+
+      body += '<p>' + testtype + ' accuracy: ' + accuracy + '%</p><br/>';
+    }
+
+    body +=
+      '<table style="width: 100%; border-collapse: collapse;"><tbody>';
+    for (let i = 0; i < accuracy_result.length; i++) {
+      body +=
+        '<tr><td style="border: 1px solid #ddd; padding: 8px;">' +
+        accuracy_result[i] +
+        '</td></tr>';
+    }
+    body += '</tbody></table><br/>';
 
     return body;
   }
@@ -291,7 +320,9 @@ export class TestComponent implements OnInit {
       return (question as Img).image_url;
     }
 
-    const audioElement = document.getElementById('audio-question') as HTMLAudioElement;
+    const audioElement = document.getElementById(
+      'audio-question'
+    ) as HTMLAudioElement;
     if (audioElement) {
       audioElement.load();
     }

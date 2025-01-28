@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Question, Option } from '../_models/question';
 import { EmailUtil } from '../_services/email_util';
+import { TimerService } from '../_services/timer_service';
 
 @Component({
   selector: 'app-training-spanish',
@@ -44,8 +45,10 @@ export class TrainingSpanishComponent implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private emailUtil: EmailUtil
+    private emailUtil: EmailUtil,
+    public timerService: TimerService
   ) {}
+
 
   ngOnInit(): void {
     this.http
@@ -55,7 +58,9 @@ export class TrainingSpanishComponent implements OnInit {
         this.initializeQueue();
         this.loadNextQuestion();
       });
+    this.timerService.startTimer();
   }
+
 
   initializeQueue(): void {
     for (let i = 0; i < this.data.iteration; i++) {
@@ -88,14 +93,14 @@ export class TrainingSpanishComponent implements OnInit {
         'spanish-training-accuracy',
         ((1 - (this.incorrectCount / this.totalQuestions)) * 100).toFixed(2)
       );
+      this.timerService.pauseTimer();
       this.emailUtil.sendEmail(
         'chenzhesun@gmail.com',
         'Training Results - ' + localStorage.getItem('username'),
         this.emailUtil.trainingTemplate()
       );
-
-      
-      this.router.navigate(['/training-results']);
+      this.router.navigate(['/training-results']);      
+      this.timerService.resetTimer();
     }
   }
 

@@ -1,12 +1,9 @@
 <!-- Add this to your training-chinese.component.html -->
 <div class="quiz-container" *ngIf="question !== undefined">
-  <br />
-  <h1 class="page-title">Spanish Training</h1>
-  <!-- <div class="question-counter">
-      Total Questions: {{ totalQuestions - queue.length }} of {{ totalQuestions }}
-    </div>
-     -->
-  <br />
+  <div class="question-counter">
+    <!-- Total Questions: {{ totalQuestions - queue.length }} of {{ totalQuestions }} -->
+    Spanish Training Timer {{ timerService.getTime() }}
+  </div>
 
   <div class="quiz-card">
     <div class="image-container">

@@ -1,11 +1,6 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -15,6 +10,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Question, Option } from '../_models/question';
 import { EmailUtil } from '../_services/email_util';
+import { TimerService } from '../_services/timer_service';
 
 @Component({
   selector: 'app-training-chinese',
@@ -47,7 +43,8 @@ export class TrainingChineseComponent implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private emailUtil: EmailUtil
+    private emailUtil: EmailUtil,
+    public timerService: TimerService
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +55,10 @@ export class TrainingChineseComponent implements OnInit {
         this.initializeQueue();
         this.loadNextQuestion();
       });
+    this.timerService.startTimer();
   }
+
+
 
   initializeQueue(): void {
     for (let i = 0; i < this.data.iteration; i++) {
@@ -89,8 +89,9 @@ export class TrainingChineseComponent implements OnInit {
       );
       localStorage.setItem(
         'chinese-training-accuracy',
-        ((1 - (this.incorrectCount / this.totalQuestions)) * 100).toFixed(2)
+        ((1 - this.incorrectCount / this.totalQuestions) * 100).toFixed(2)
       );
+
       this.router.navigate(['/training-spanish']);
     }
   }
@@ -104,7 +105,7 @@ export class TrainingChineseComponent implements OnInit {
 
   selectAnswer(option: Option): void {
     this.correctAnswerSelected = option.isCorrect; // Check if the selected option is correct
-    
+
     // reset feedback
     if (option.isCorrect) {
       this.feedback = '✔️ Correct!';
@@ -112,7 +113,9 @@ export class TrainingChineseComponent implements OnInit {
       this.feedback = '❌ Incorrect!';
       this.incorrectCount++;
       option.isSelectedWrong = true;
-      this.wrongQuestions.push(this.emailUtil.wrongQuestionsStringify(this.question, 'chinese'));
+      this.wrongQuestions.push(
+        this.emailUtil.wrongQuestionsStringify(this.question, 'chinese')
+      );
     }
 
     // Mark the correct answer and disable incorrect ones
