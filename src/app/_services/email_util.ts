@@ -17,9 +17,9 @@ export class EmailUtil {
       from: 'chenzhesun@gmail.com',
       message: body,
     };
-    console.log(emailData);
     emailjs
       .send(this.serviceId, this.templateId, emailData, this.userId)
+
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
       })
@@ -28,10 +28,10 @@ export class EmailUtil {
       });
   }
 
-  trainingTemplate() {
+  trainingTemplate(time: string) {
     return `<p>${localStorage.getItem(
       'username'
-    )} have completed a training session. Here are your results:</p>    
+    )} have completed a training session and achieved a time of ${time}. Here are your results:</p>    
 
             <p>Chinese Training Accuracy: ${localStorage.getItem(
               'chinese-training-accuracy'
