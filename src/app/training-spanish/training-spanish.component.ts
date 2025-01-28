@@ -99,8 +99,7 @@ export class TrainingSpanishComponent implements OnInit {
         'Training Results - ' + localStorage.getItem('username'),
         this.emailUtil.trainingTemplate(this.timerService.getTime()),
       );
-      this.router.navigate(['/training-results']);      
-      this.timerService.resetTimer();
+      this.router.navigate(['/training-results']);
     }
   }
 

@@ -7,7 +7,6 @@ export class TimerService {
     if (!this.isRunning) {
       this.isRunning = true;
       this.interval = setInterval(() => {
-        console.log('time', this.time);
         this.time++;
       }, 1000); // Update every second
     }

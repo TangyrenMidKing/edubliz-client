@@ -12,6 +12,7 @@ export class TestResultComponent {
   constructor(private router: Router) {}
 
   navigateHome() {
+    localStorage.clear();
     this.router.navigate(['/home']);
   }
 }

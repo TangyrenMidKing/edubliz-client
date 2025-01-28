@@ -15,7 +15,11 @@ export class TrainingResultsComponent {
 
   navigateHome() {
     this.router.navigate(['/home']);
+    localStorage.clear();
+    this.timerService.resetTimer();
   }
+
+
 
   getChineseTrainingAccuracy() {
     return localStorage.getItem('chinese-training-accuracy');
