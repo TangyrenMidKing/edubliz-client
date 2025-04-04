@@ -17,6 +17,7 @@ export class TrainingResultsComponent {
     this.router.navigate(['/home']);
     var username = localStorage.getItem('username');
     localStorage.clear();
+    console.log('username: ', username);
     localStorage.setItem('username', username??'Unknown');
     this.timerService.resetTimer();
   }
